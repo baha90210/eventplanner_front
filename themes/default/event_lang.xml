@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translations>
-    <translation id="Trans-Event">
-        <english>Event</english>
+    <translation id="Trans-how-are-u">
+        <english>Hello, how are u?</english>
         <italian>Ciao, come stai?</italian>
+        <french>Bonjour, Comment vas-tu?</french>
+        <twents>Goeindag eem, hoe stet dr veur?</twents>
+    </translation>
+    <translation id="Trans-fine">
+        <english>Everything fine, Thx!</english>
+        <italian>Bene, grazie.</italian>
+        <french>Très bien, merci.</french>
+        <twents>Goud heur, dank oe wa</twents>
     </translation>
 </translations>

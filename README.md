@@ -14,13 +14,21 @@ dan kun je de rest van de modules weg gooien
 
 oeps !!!!!!! klaar !!!!
 
-gebruik bv <td class="Trans-Event">Event</td>
+gebruik bv <td class="Trans-Event">Event</td> 
 
-of <td class="Trans-hutjeflut">hatseflats</td> om het woord tussen de td tags te vertalen.
+of sluit de tekst in een div op met de class identifier bv...
+
+<div class="Trans-hutjeflut">hatseflats</div> 
+
+om het woord tussen de identifiers tag te vertalen.
 
 voeg &lang=english of $lang=italian toe aan de url
 
-en zorg dat in de themes map een bestand staat zoals event_lang.xml voor de module event
+en zorg dat in de themes map een bestand staat zoals event_lang.xml 
+
+voor de module event 
+
+met daar in de nodige vertalings woorden of zinnen  voor die talen
 
 in dat bestand per identifier de vertalingen toevoegen zie themes/default/event_lang.xml als voorbeeld
 
@@ -31,6 +39,17 @@ http://www.php-prof-it.nl/netprojects/les6/productie_front/eventviewer/index.php
 verander dan naar 
 
 http://www.php-prof-it.nl/netprojects/les6/productie_front/eventviewer/index.php?route=event/overview&lang=english
+
+en zie de vertaling engels
+
+http://www.php-prof-it.nl/netprojects/les6/productie_front/eventviewer/index.php?route=event/overview&lang=french
+
+frans en......
+
+twents voor de liefhebber
+
+http://www.php-prof-it.nl/netprojects/les6/productie_front/eventviewer/index.php?route=event/overview&lang=twents
+
 
 Dit was mijn eind opdracht had ik begrepen of niet Bart? 
 
