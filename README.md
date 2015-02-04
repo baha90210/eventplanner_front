@@ -50,6 +50,11 @@ twents voor de liefhebber
 
 http://www.php-prof-it.nl/netprojects/les6/productie_front/eventviewer/index.php?route=event/overview&lang=twents
 
+chinese
+
+http://www.php-prof-it.nl/netprojects/les6/productie_front/eventviewer/index.php?route=event/overview&lang=chinese
+
+klaar nu.....
 
 Dit was mijn eind opdracht had ik begrepen of niet Bart? 
 
