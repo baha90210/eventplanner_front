@@ -23,12 +23,19 @@
 			</li>
 			<li><a href="index.php?route=login/logout&token=<?php echo $_GET['token'] ?>">Log Out</a>
 			</li>
+			<li><a href="index.php?route=login/logout&token=<?php echo $_GET['token'] ?>">Log Out</a>
+			</li>
+			<li><a href="index.php?route=login/logout&token=<?php echo $_GET['token'] ?>">Log Out</a>
+			</li>
 				
 		</ul>
 	</div>
+        
+
 	
 	<?php endif; ?>
 	</div>
 	<div class="clear_all">&nbsp;</div>
 	<h1><?php echo $this->title; ?></h1>
 	<div id="container">
+ 
