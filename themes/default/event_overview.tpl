@@ -1,4 +1,4 @@
-
+   
 <div>
 	<?php if(isset($this->msg)){ ?>
 	<div class="msg"><?php echo $this->msg; ?></div>
@@ -6,7 +6,7 @@
 	<table class="list">
 		<thead>
 			<tr>
-				<td>Event</td>
+				<td class="Trans-Event">Event</td> 
 				<td>Startdatum</td>
 				<td>Einddatum</td>
 				<td class="center">Toegangsprijs</td>

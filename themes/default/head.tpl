@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	<title><?php echo $this->title; ?></title>
@@ -12,4 +13,37 @@
 			echo $style;
 		}
 	?>
+
+
+ 
+<script type="text/javascript" language="javascript">
+
+$(function() {
+    var language = '<?php echo $_GET['lang']; ?>';
+
+    $.ajax({
+
+        <?php 
+            $module = explode('/',$_GET['route']);
+            $transfile = 'themes/default/'.$module[0].'_lang.xml';
+            if(file_exists($transfile)){ 
+                echo " url: '".$transfile."',";
+            } 
+        ?>
+ 
+        success: function(xml) {
+ 
+            $(xml).find('translation').each(function(){
+ 
+                var id = $(this).attr('id');
+
+                var text = $(this).find(language).text();
+
+                $("." + id).html(text);
+            });
+        }
+    });
+});
+ 
+</script>
 </head>
