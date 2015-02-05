@@ -2,38 +2,29 @@
 class eventController extends Controller{
 
 
-	public function overview(){		
-		$this->setTitle('Overzicht events');
-		$this->addScript('./themes/default/javascript/jquery/jquery-1.7.1.min.js');
-		
-		$this->loadModel('event');
-		
-		$events = $this->model->getEvents();
+public function overview(){		
+    $this->setTitle('Overzicht events');
+    $this->addScript('./themes/default/javascript/jquery/jquery-1.7.1.min.js');
 
-		$this->events = array();
-		
-        foreach($events as $event){
-	        //get event locations
-	        $event['locations'] = array();
-	        $event_locations = $this->model->baha_getEventLocation($event['event_id']);
-	        
-	        foreach($event_locations as $location){
-		        $event['locations'][] = $location;
-	        }
+    $this->loadModel('event');
 
-	        //get event resources
-	        $event['resources'] = array();
-	        $event_resources = $this->model->baha_getEventResources($event['event_id']);
-	        //var_dump($event_resources);
-	        foreach($event_resources as $resource){
-		        $event['resources'][] = $resource;
-	        }
-	        
-	        $this->events[] = $event;
-		}		
+    $events = $this->model->getEvents();
 
-		$this->render('event_overview.tpl');
-	}
+    $this->events = array();
 
-	
+}
+
+public function eventdetails(){		
+    
+    $this->setTitle('Overzicht events');
+    $this->addScript('./themes/default/javascript/jquery/jquery-1.7.1.min.js');
+
+    $this->loadModel('event');
+    
+    $id = filter_input(INPUT_GET, 'event', FILTER_SANITIZE_NUMBER_INT);
+    $this->event = $this->model->getEvent($id);
+    
+    $this->render('front_event_details.tpl');
+}
+
 }
