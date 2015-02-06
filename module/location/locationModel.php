@@ -18,9 +18,10 @@ class locationModel extends Model{
             $sql  = "SELECT L.* FROM location as L ";
             $sql .= "INNER JOIN event_location as E ";
             $sql .= "WHERE L.location_id = E.location_id ";
-            $sql .= "AND l.location_id = '".$id."'";
+            $sql .= "AND E.event_id = ".$id.";";
             $result = $this->db->query($sql);
 
-            return $result->row;
+            //echo $sql;
+            return $result->rows;
     }
 }

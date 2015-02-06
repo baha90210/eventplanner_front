@@ -1,38 +1,24 @@
 
+<p>Naam event : <?php echo $this->event['name']; ?></p>
 
+<p>Stardivatum : <?php echo $this->event['start_date']; ?></p>
 
-<table class="table">
-		<tr>
-			<td>Naam event:</td>
-			<td><?php echo stripslashes($this->event['name']); ?></td>
-		</tr>
-		<tr>
-			<td>Startdatum:</td>
-			<td><?php echo $this->event['start_date']; ?></td>
-		</tr>
-		<tr>
-			<td>Einddatum:</td>
-			<td><?php echo $this->event['end_date']; ?>" /></td>
-		</tr>
-		<tr>
-			<td>Toegangsprijs:</td>
-			<td><?php echo $this->event['price']; ?></td>
-		</tr>
-		<?php foreach($this->event_locations as $location_id){ ?>
-		<tr>
-			<td>Locatie:</td>
-			<td>
-				<select name="location[]">
-					<option value="">-- Selecteer een locatie --</option>
-					<?php foreach($this->locations as $location){ ?>
-					<option value="<?php echo $location['location_id'] ?>" <?php echo ($location['location_id'] == $location_id['location_id'])?'selected="selected"':''; ?>><?php echo $location['name'] ?></option>
-					<?php } ?>
-				</select> <img src="./themes/<?php echo THEME ?>/images/remove.png" onclick="deleteLocation(this);" />
-			</td>
-		</tr>
-		<?php } ?>
-		<tr class="location_placeholder">
-			<td colspan="2"><input type="button" name="addLocationhtml" value="Add location" onclick="addLocation();" /></td>
-		</tr>
-                
-</table>
+<p>Einddatum : <?php echo $this->event['end_date']; ?></p>
+
+<p>Toegangsprijs : <?php echo $this->event['price']; ?></p>
+
+<p>Locaties:
+    <select name="location">
+        <?php foreach($this->locations as $k) { ?>
+        <option value=""><?php echo $k['name'] ?></option>
+        <?php } ?>
+    </select> 
+</p>
+
+<p>Optredes:
+    <select name="performances">
+        <?php foreach($this->performances as $k) { ?>
+        <option value=""><?php echo $k['performance_title'] ?></option>
+        <?php } ?>
+    </select> 
+</p>

@@ -3,9 +3,10 @@ class eventController extends Controller{
 
 
 public function overview(){		
-    $this->setTitle('Overzicht events');
-    $this->addScript('./themes/default/javascript/jquery/jquery-1.7.1.min.js');
-
+    $this->addScript('//code.jquery.com/jquery-1.11.2.min.js');
+    $this->addScript('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js');
+    $this->addStyle('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css');
+    
     $this->loadModel('event');
 
     $events = $this->model->getEvents();
@@ -14,17 +15,29 @@ public function overview(){
 
 }
 
+
+// Opdracht Sander
 public function eventdetails(){		
     
-    $this->setTitle('Overzicht events');
-    $this->addScript('./themes/default/javascript/jquery/jquery-1.7.1.min.js');
-
-    $this->loadModel('event');
+    $this->addScript('//code.jquery.com/jquery-1.11.2.min.js');
+    $this->addScript('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js');
+    $this->addStyle('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css');
     
     $id = filter_input(INPUT_GET, 'event', FILTER_SANITIZE_NUMBER_INT);
+    
+    // haal gegevens event op
+    $this->loadModel('event');
     $this->event = $this->model->getEvent($id);
     
-    $this->render('front_event_details.tpl');
+    // haal locaties van event op
+    $this->loadModel('location');
+    $this->locations = $this->model->getLocationsByEvent($id);
+    
+    // haal locaties van event op
+    $this->loadModel('performance');
+    $this->performances = $this->model->getperformancesByEvent($id);  
+    // render het template
+    $this->render('front_eventdetails.tpl');
 }
 
 }

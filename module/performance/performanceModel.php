@@ -15,8 +15,6 @@ public function getPerformances()
 
     return $result->rows;
 }
-
-
 	
 public function getPerformance($id)
 {
@@ -26,5 +24,18 @@ public function getPerformance($id)
     return $result->row;
 }
 
+public function getPerformancesByEvent($event)
+{
+    $sql = "SELECT performance_id, performance_title, t1.event_id, event.name AS eventname, artist.artist_id artist_id, artist.name AS artistname, t1.date_from, t1.date_until, confirmed ";
+    $sql .= "FROM performance AS t1 ";
+    $sql .= "INNER JOIN artist ON artist.artist_id = t1.artist_id ";
+    $sql .= "INNER JOIN event ON event.event_id = t1.event_id ";
+    $sql .= "WHERE t1.event_id=".$_GET['event']." ";
+    $sql .= "ORDER BY date_from ASC";
+
+    $result = $this->db->query($sql);
+
+    return $result->rows;
+}
 
 }
