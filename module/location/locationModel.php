@@ -22,6 +22,6 @@ class locationModel extends Model{
             $result = $this->db->query($sql);
 
             //echo $sql;
-            return $result->rows;
+            return $result;
     }
 }

@@ -28,7 +28,6 @@ public function overview(){
     $this->addStyle('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css');
     
     $this->loadModel('event');
-
     $events = $this->model->getEvents();
 
     $this->events = array();
@@ -42,6 +41,7 @@ public function eventdetails(){
     $this->addScript('//code.jquery.com/jquery-1.11.2.min.js');
     $this->addScript('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js');
     $this->addStyle('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css');
+    $this->addScript('http://maps.googleapis.com/maps/api/js');
     
     $id = filter_input(INPUT_GET, 'event', FILTER_SANITIZE_NUMBER_INT);
     

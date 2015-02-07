@@ -6,7 +6,7 @@
         <!-- End of colom -->    
         </div>
         
-        <div class="col-md-2"> &nbsp; </div>
+        <div class="col-md-1"> &nbsp; </div>
         
     </div>    
 </body>

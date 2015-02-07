@@ -4,10 +4,10 @@
     <div class="row col-md-12"> 
         
         <!-- eerste lege kolom -->
-        <div class="col-md-2"> &nbsp; </div>
+        <div class="col-md-1"> &nbsp; </div>
         
         <!-- tweede kolom voor inhoud -->
-        <div class="col-md-8">
+        <div class="col-md-10">
 
             <!-- menu rij -->
             <div class="row" id="header">
