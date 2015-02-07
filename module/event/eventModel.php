@@ -1,5 +1,6 @@
 <?php
 class eventModel extends Model{
+
 	public function getEvents(){
 		$sql = "SELECT * FROM event ORDER BY start_date ASC";
 		
@@ -8,7 +9,86 @@ class eventModel extends Model{
 		return $result->rows;
 	}
 	
-	
+	// Get the events and its locations and artists for a given month
+	public function getMonthEventDetails($month = null) {
+
+		$date = date_parse($month);
+
+		if (!$date['year'] or !$date['month']) {
+			// Given month is invalid, use today.
+			$date = date_parse(date('Y-m-d'));			
+		}
+
+		// First day of month
+		$month_start = $date['year']."-".$date['month']."-1";
+
+		// First day of next month
+		$date_next = $date;
+		if ($date_next['month'] == 12) {
+			$date_next['year']++;
+			$date_next['month'] = 1;
+		} else {
+			$date_next['month']++;
+		}
+
+		$month_end = $date_next['year']."-".$date_next['month']."-1";
+
+		// If the query fails, execute this sql from git:
+		// 1. _assets/events-performance.sql
+		// 2. _assets/events-location-update.sql
+
+		$sql = "SELECT *, 
+			event.name AS event_name, 
+			artist.name AS artist_name,
+			location.name AS location_name
+			FROM event
+			INNER JOIN performance ON event.event_id = performance.event_id
+			INNER JOIN artist ON artist.artist_id = performance.artist_id
+			INNER JOIN location ON location.location_id = performance.location_id
+			WHERE event.start_date >= '{$month_start}' 
+			AND event.start_date < '{$month_end}'
+			ORDER BY event.start_date ASC, performance.date_from ASC";
+		
+		$result = $this->db->query($sql);
+		
+		// Put results into structured array
+		$output = array();
+
+		foreach ($result->rows as $row) {
+
+			$output[ $row['event_id'] ]['name']       = $row['event_name'];
+			$output[ $row['event_id'] ]['price']      = $row['price'];
+			$output[ $row['event_id'] ]['start_date'] = $row['start_date'];
+			$output[ $row['event_id'] ]['end_date']   = $row['end_date'];
+
+			$output[ $row['event_id'] ]['artists'][ $row['artist_id'] ] = array(
+				'name'    => $row['artist_name'],
+				'website' => $row['website'],
+				'image'   => $row['image']
+			);
+
+			$output[ $row['event_id'] ]['locations'][ $row['location_id'] ] = array(
+				'name'     => $row['location_name'],
+				'address'  => $row['address'],
+				'capacity' => $row['capacity']
+			);
+
+			$output[ $row['event_id'] ]['performances'][ $row['location_id'] ] = array(
+				'artist_name'       => $row['artist_name'],
+				'artist_website'    => $row['website'],
+				'artist_image'      => $row['image'],
+				'location_name'     => $row['location_name'],
+				'location_address'  => $row['address'],
+				'location_capacity' => $row['capacity'],
+				'title'             => $row['performance_title'],
+				'date_from'         => $row['date_from'],
+				'date_until'        => $row['date_until']
+			);
+
+		}
+
+		return $output;
+	}
 	
 	public function getEvent($id){
 		$sql = "SELECT * FROM event WHERE event_id = '".$id."'";

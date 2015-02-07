@@ -1,6 +1,26 @@
 <?php
 class eventController extends Controller{
 
+// Opdracht Alexander
+public function index() {
+
+    // Add needed scripts
+    $this->addScript('//code.jquery.com/jquery-1.11.2.min.js');
+    $this->addScript('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js');
+    $this->addStyle('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css');
+    
+    // Get information about the events
+    $this->loadModel('event');
+
+    $events = $this->model->getMonthEventDetails(isset($_GET['month']) ? $_GET['month'] : null);
+
+    $this->events = $events;
+    $this->events_json = json_encode($events);
+
+    $this->render('event_index.tpl');
+
+}
+
 
 public function overview(){		
     $this->addScript('//code.jquery.com/jquery-1.11.2.min.js');
