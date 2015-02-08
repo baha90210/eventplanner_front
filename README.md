@@ -1,6 +1,13 @@
 # eventplanner_front
 
-volgens mij hoeven we julliede front maar 1 model te hebben met 2 universele get functies
+8-2: locations table uitgebreid met postcode, plaats en land voor extra adres gegevens die nodig zijn voor de google map.
+
+ALTER TABLE `location` ADD `postcode` VARCHAR(6) NOT NULL AFTER `address`, ADD `plaats` VARCHAR(50) NOT NULL AFTER `postcode`;
+ALTER TABLE `location` ADD `land` VARCHAR(50) NOT NULL AFTER `plaats`;
+
+-----
+
+Volgens mij hoeven we julliede front maar 1 model te hebben met 2 universele get functies
  
     1 function Getrecords($table)  //voor alle records van een table
     2 functie GetrecordsId($table,$id) // voor record op id uit een table
