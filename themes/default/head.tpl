@@ -13,8 +13,6 @@
 		}
 	?>
 
-
- 
 <script type="text/javascript" language="javascript">
 
 $(function() {
@@ -53,6 +51,5 @@ $(function() {
     });
     
 });
- 
 </script>
 </head>
