@@ -121,4 +121,11 @@ ul.menu li{
 	color: blue;
 }
 
+.Trans-how-are-u{
+    float:right !important;
+    color:white;
+    z-index:999;
+    padding: 5px 15px 0 0;
+}
+
 /* ============  Einde menu sectie =============== */
