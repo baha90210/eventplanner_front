@@ -29,7 +29,7 @@ public function getPerformancesByEvent($event)
     $sql = "SELECT performance_id, performance_title, t1.event_id, artist.artist_id artist_id, artist.name AS artistname, location.name as location_name, t1.date_from, t1.date_until, confirmed ";
     $sql .= "FROM performance AS t1 ";
     $sql .= "INNER JOIN artist ON artist.artist_id = t1.artist_id ";
-    $sql .= "INNER JOIN location ON location.location_id = t1.location_id ";
+    $sql .= "LEFT JOIN location ON location.location_id = t1.location_id ";
     $sql .= "WHERE t1.event_id=".$event."   ";
     $sql .= "ORDER BY date_from ASC";
     //echo $sql;
