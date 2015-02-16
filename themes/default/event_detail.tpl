@@ -6,7 +6,7 @@
 	<input type="hidden" name="id" value="<?php echo (isset($_GET['id']))?$_GET['id']:''; ?>" />
 	<table class="list">
 		<tr>
-			<td>Naam event:</td>
+			<td><?php echo $this->label_event_front; ?>:</td>
 			<td><input class="required" type="text" name="req_name" value="<?php echo stripslashes($this->event['name']); ?>" /></td>
 		</tr>
 		<tr>

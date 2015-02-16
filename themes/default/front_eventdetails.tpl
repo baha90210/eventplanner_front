@@ -1,8 +1,8 @@
 <div class ="row col-md-12">
     <div class ="col-md-8">
 
-    <p>Naam event : <?php echo $this->event['name']; ?></p>
-    <p>Startdatum : <?php echo $this->event['start_date']; ?></p>
+    <p><?php echo $this->label_event_name; ?> : <?php echo $this->event['name']; ?></p>
+    <p><?php echo $this->label_event_startdatum; ?> : <?php echo $this->event['start_date']; ?></p>
     <p>Einddatum : <?php echo $this->event['end_date']; ?></p>
     <p>Toegangsprijs : <?php echo $this->event['price']; ?></p>
     <?php if ($this->locations->num_rows ==1 )

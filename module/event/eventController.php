@@ -1,6 +1,15 @@
 <?php
 class eventController extends Controller{
-
+// opdracht bxckooy
+public function __construct(){
+		$this->language = new language;
+                
+                $this->language->load('event');
+		$this->label_event_name = $this->language->get('label_event_name');
+		$this->label_event_startdatum = $this->language->get('label_event_startdatum');
+		$this->label_event_einddatum = $this->language->get('label_event_einddatum');
+		$this->label_event_prijs = $this->language->get('label_event_prijs');
+}
 // Opdracht Alexander
 public function index() {
 

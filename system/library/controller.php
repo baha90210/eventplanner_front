@@ -6,7 +6,8 @@ class Controller{
 	private $header_msg = '';
 	public $scripts = array();
 	public $styles = array();
-	
+	public $language = '';
+        
 	public function index(){
 		echo 'Dit is de index van de parent controller';		
 	}
