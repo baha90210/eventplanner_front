@@ -18,11 +18,12 @@
         <?php } ?>
     <p>Optredens:
     <table class="table">
-        <thead><tr><th>Title</th><th>Location</th><th>datum</th><th>tijd</th></tr></thead>
+        <thead><tr><th>Title</th><th>Locatie</th><th>Datum</th><th>Tijd(en)</th><th></th></tr></thead>
         <?php foreach($this->performances as $k) { ?>
             <tr class="rij loc_<?php echo str_replace(' ','_',$k['location_name']) ?>"><td><?php echo ($k['performance_title'])?></td><td><?php echo $k['location_name'] ?></td>
             <td><?php echo (date('D Y-m-d',strtotime($k['date_from']))) ?></td>
-            <td> <?php echo (date('G:i',strtotime($k['date_from']))."-".date('G:i',strtotime($k['date_until']))) ?></td></tr>
+            <td> <?php echo (date('G:i',strtotime($k['date_from']))."-".date('G:i',strtotime($k['date_until']))) ?></td>
+            <td><a href='index.php?route=artist/details&id=<?php echo $k['artist_id'] ?>'> <span class="glyphicon glyphicon-info-sign"></span></a></td></tr>
         <?php } ?>
       </table>
     </p>

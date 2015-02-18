@@ -26,7 +26,7 @@ public function getPerformance($id)
 
 public function getPerformancesByEvent($event)
 {
-    $sql = "SELECT performance_id, performance_title, t1.event_id, artist.artist_id artist_id, artist.name AS artistname, location.name as location_name, t1.date_from, t1.date_until, confirmed ";
+    $sql = "SELECT t1.*, artist.artist_id AS artist_id, artist.name AS artistname, location.name AS location_name ";
     $sql .= "FROM performance AS t1 ";
     $sql .= "INNER JOIN artist ON artist.artist_id = t1.artist_id ";
     $sql .= "LEFT JOIN location ON location.location_id = t1.location_id ";

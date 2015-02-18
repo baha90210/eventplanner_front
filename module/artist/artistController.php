@@ -33,4 +33,14 @@ class artistController extends Controller{
 		
 		echo json_encode($result);
 	}
+        
+	public function details(){		
+		$this->setTitle('Artist profile');
+		
+		if(isset($_GET['id'])){
+			$this->loadModel('artist');		
+			$this->artist = $this->model->getArtist($_GET['id']);		
+			$this->render('front_artistdetails.tpl');
+		}
+	}
 }
