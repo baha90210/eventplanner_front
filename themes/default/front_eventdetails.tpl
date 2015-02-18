@@ -9,9 +9,9 @@
             echo ("<p> Locatie : ".$this->locations->row['name']." </p>");
           else { ?>
             <p>Locaties:
-            <select name="location">
+            <select name="loc" onchange="SelectRows()">
             <?php foreach($this->locations->rows as $k) { ?>
-                <option value=""><?php echo $k['name'] ?></option>
+                <option value="<?php echo str_replace(' ','_',$k['name']) ?>"><?php echo $k['name'] ?></option>
             <?php } ?>
             </select> 
             </p>
@@ -20,7 +20,7 @@
     <table class="table">
         <thead><tr><th>Title</th><th>Location</th><th>datum</th><th>tijd</th></tr></thead>
         <?php foreach($this->performances as $k) { ?>
-            <tr><td><?php echo ($k['performance_title'])?></td><td><?php echo $k['location_name'] ?></td>
+            <tr class="rij loc_<?php echo str_replace(' ','_',$k['location_name']) ?>"><td><?php echo ($k['performance_title'])?></td><td><?php echo $k['location_name'] ?></td>
             <td><?php echo (date('D Y-m-d',strtotime($k['date_from']))) ?></td>
             <td> <?php echo (date('G:i',strtotime($k['date_from']))."-".date('G:i',strtotime($k['date_until']))) ?></td></tr>
         <?php } ?>
@@ -32,6 +32,16 @@
 </div>
 
 <script type="text/javascript">
+
+function SelectRows(){
+    // Verberg alles
+    $('.rij').hide();
+    loc = $('select[name="loc"]').val();
+    // Bepaal welke regels getoond moeten worden
+    selector = '.rij'; // Begin met alles
+    if (loc) { selector += '.loc_'+loc.replace(" ","_"); } 
+    $(selector).show(); // Toon deze rijen.
+}
 
 $(document).ready(load());
 
@@ -88,4 +98,5 @@ function downloadUrl(url, callback) {
 }
     
 function doNothing() {}
+
   </script>
