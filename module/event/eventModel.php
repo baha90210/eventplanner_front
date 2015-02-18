@@ -71,6 +71,7 @@ class eventModel extends Model{
 			$output[ $row['event_id'] ]['locations'][ $row['location_id'] ] = array(
 				'name'     => $row['location_name'],
 				'address'  => $row['address'],
+				'city'     => $row['plaats'],
 				'capacity' => $row['capacity']
 			);
 
