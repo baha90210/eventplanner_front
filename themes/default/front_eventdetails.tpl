@@ -11,7 +11,7 @@
             <p>Locaties:
             <select name="loc" onchange="SelectRows()">
             <?php foreach($this->locations->rows as $k) { ?>
-                <option value="<?php echo str_replace(' ','_',$k['name']) ?>"><?php echo $k['name'] ?></option>
+            <option value="<?php echo (str_replace(' ','_',$k['name']).'">'.$k['name']) ?></option>
             <?php } ?>
             </select> 
             </p>
@@ -23,7 +23,7 @@
             <tr class="rij loc_<?php echo str_replace(' ','_',$k['location_name']) ?>"><td><?php echo ($k['performance_title'])?></td><td><?php echo $k['location_name'] ?></td>
             <td><?php echo (date('D Y-m-d',strtotime($k['date_from']))) ?></td>
             <td> <?php echo (date('G:i',strtotime($k['date_from']))."-".date('G:i',strtotime($k['date_until']))) ?></td>
-            <td><a href='index.php?route=artist/details&id=<?php echo $k['artist_id'] ?>'> <span class="glyphicon glyphicon-info-sign"></span></a></td></tr>
+            <td><a href="index.php?route=artist/details&id=<?php echo $k['artist_id'] ?>"> <span class="glyphicon glyphicon-info-sign"></span></a></td></tr>
         <?php } ?>
       </table>
     </p>
